@@ -1,20 +1,28 @@
-body {
-  font-family: Arial, sans-serif;
+/* 基本设置 */
+body,
+html {
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
 }
 
+/* 导航栏样式 */
 header {
   background-color: #333;
-  color: #fff;
+  color: white;
   padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
 nav ul {
-  list-style: none;
-  padding: 0;
+  list-style-type: none;
   margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
 }
@@ -24,29 +32,57 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ff6647;
+}
+
+/* 内容区域样式 */
+.content {
+  padding: 80px 20px;
+  text-align: center;
 }
 
 section {
-  padding: 20px;
-  margin: 20px 0;
+  margin-bottom: 40px;
 }
 
-#about {
-  background-color: #f4f4f4;
+section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
+section p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* 关于我们部分 */
+#about video {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 团队成员部分 */
 .team-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 10px;
   display: inline-block;
-  width: 200px;
-  text-align: center;
+  width: 30%;
+  margin: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  vertical-align: top;
 }
 
 .team-card img {
@@ -56,70 +92,164 @@ section {
   margin-bottom: 10px;
 }
 
+.team-card h3 {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.team-card p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.team-card a {
+  color: #ff6347;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.team-card a:hover {
+  text-decoration: underline;
+}
+
+/* 项目部分 */
 .project-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 10px;
   display: inline-block;
-  width: 250px;
-  text-align: center;
+  width: 45%;
+  margin: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  vertical-align: top;
+  text-align: left;
+}
+
+.project-card h3 {
+  font-size: 28px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.project-card p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
 }
 
 .project-card img {
-  width: 200px;
-  height: 150px;
+  width: 100%;
+  border-radius: 8px;
   margin-top: 10px;
-  border-radius: 5px;
 }
 
-#partners .partner-logos img {
+/* 指导老师部分 */
+#teachers .teacher-card {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  vertical-align: top;
+}
+
+#teachers .teacher-card img {
   width: 100px;
   height: 100px;
-  margin: 10px;
-  display: inline-block;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
+#teachers .teacher-card h3 {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #333;
+}
+
+#teachers .teacher-card p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
+#teachers .teacher-card a {
+  color: #ff6347;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#teachers .teacher-card a:hover {
+  text-decoration: underline;
+}
+
+/* 联系我们部分 */
 #contact form {
-  max-width: 400px;
-  margin: auto;
+  display: inline-block;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
 }
 
 #contact label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  color: #333;
 }
 
 #contact input,
 #contact textarea {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 #contact button {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6347;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 #contact button:hover {
-  background-color: #555;
+  background-color: #ff4500;
 }
 
+/* 页脚样式 */
 footer {
   background-color: #333;
-  color: #fff;
+  color: white;
   text-align: center;
   padding: 10px 0;
   position: fixed;
   width: 100%;
   bottom: 0;
+  z-index: 1000;
+}
+
+/* 计时和天气样式 */
+.clock,
+.weather {
+  position: fixed;
+  top: 60px; /* 调整位置以不与导航栏重叠 */
+  right: 20px;
+  background-color: rgba(51, 51, 51, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1001;
+}
+
+.weather {
+  top: 85px; /* 调整位置以不与计时元素重叠 */
 }
