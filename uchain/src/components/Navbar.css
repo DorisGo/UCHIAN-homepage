@@ -1,0 +1,26 @@
+/* 导航栏样式 */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navbar li {
+  margin: 0 15px;
+}
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+.navbar a:hover {
+  color: #ff6347;
+}

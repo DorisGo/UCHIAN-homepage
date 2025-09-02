@@ -9,4 +9,4 @@ const Footer = () => {
 };
 
 export default Footer;
-npx create-react-app uchain
+
