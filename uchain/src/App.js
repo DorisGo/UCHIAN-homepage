@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
+import MessageBox from "./components/MessageBox";
 import "./App.css";
 
 function App() {
@@ -336,6 +337,9 @@ function App() {
       </section>
 
       <Footer />
+
+      {/* 留言框组件 */}
+      <MessageBox />
     </div>
   );
 }
