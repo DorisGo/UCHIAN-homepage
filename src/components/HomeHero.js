@@ -78,12 +78,13 @@ const HomeHero = () => {
     return map[code] || "天气";
   };
 
+  const bgUrl = process.env.PUBLIC_URL + "/images/icon/background8.jpg";
   return (
-    <section className="home-hero">
+    <section className="home-hero" style={{ backgroundImage: `url(${bgUrl})` }}>
       <div className="home-hero__overlay" />
       {/* 左上角 Logo 占位：将 src 改为你的图片路径 */}
       <div className="home-hero__brand">
-        <img src="../images/tranlogo-48c8bcc0.png" alt="团队Logo" />
+        <img src="/images/logo.png" alt="团队Logo" />
       </div>
       <div className="home-hero__content">
         <div className="home-hero__left">

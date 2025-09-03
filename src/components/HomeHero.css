@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../images/background8.jpg');
   /* 在 public/ 放 hero-bg.jpg，或改成你的路径 */
   background-size: cover;
   background-position: center;

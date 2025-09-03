@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
-import "./App.css";
-import HomeHero from "./components/HomeHero";
+import Navbar from "./Navbar";
+import Footer from "./footer";
+import "../App.css";
+import HomeHero from "./HomeHero";
 
 function App() {
   return (
