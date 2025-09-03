@@ -1,0 +1,147 @@
+.home-hero {
+  position: relative;
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/background8.jpg');
+  /* 在 public/ 放 hero-bg.jpg，或改成你的路径 */
+  background-size: cover;
+  background-position: center;
+}
+
+.home-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* 左上角 Logo */
+.home-hero__brand {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+}
+
+.home-hero__brand img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.home-hero__content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  width: 100%;
+  max-width: 1120px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 24px;
+  align-items: center;
+}
+
+.home-hero__left h1 {
+  margin: 0 0 8px 0;
+  font-size: 40px;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica, Arial, Noto Sans, "Liberation Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.home-hero__left p {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.home-hero__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-hero__infocard {
+  width: 420px;
+  /* 固定宽度，避免抖动 */
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.infocard-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.infocard-row+.infocard-row {
+  border-top: 1px dashed rgba(255, 255, 255, 0.18);
+}
+
+.label {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.value {
+  color: #fff;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quote-row .value {
+  white-space: nowrap;
+}
+
+.quote-text {
+  opacity: 0.95;
+}
+
+@media (max-width: 900px) {
+  .home-hero__content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .home-hero__right {
+    justify-content: center;
+  }
+
+  .home-hero__infocard {
+    width: 100%;
+    max-width: 520px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: 64vh;
+  }
+
+  .home-hero__content h1 {
+    font-size: 28px;
+  }
+
+  .home-hero__content p {
+    font-size: 16px;
+  }
+}
