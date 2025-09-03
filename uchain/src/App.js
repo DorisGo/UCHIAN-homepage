@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import "./App.css";
 
 function App() {
+  const teamImages = [
+    require("./images/picture-19f2969f.jpg"),
+    require("./images/fc1-88503ee4.png"),
+    require("./images/fc2-fe8671ba.png"),
+    require("./images/fc3-d10f9f86.png"),
+  ];
+
+  const extendedImages = [...teamImages, teamImages[0]];
+  const [teamIndex, setTeamIndex] = useState(0);
+  const [enableTransition, setEnableTransition] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTeamIndex((prev) => prev + 1);
+    }, 4000); // 每4秒切换一张
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (teamIndex === teamImages.length) {
+      // 到达克隆的最后一张后，瞬间回到首张，制造无缝效果
+      const timeout = setTimeout(() => {
+        setEnableTransition(false);
+        setTeamIndex(0);
+        // 让浏览器应用无过渡的回位，再恢复过渡
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => setEnableTransition(true));
+        });
+      }, 820); // 对齐过渡时长
+      return () => clearTimeout(timeout);
+    }
+  }, [teamIndex, teamImages.length]);
+
   return (
     <div className="App">
       <Header />
@@ -134,21 +167,166 @@ function App() {
       </section>
 
       {/* 团队成员 */}
-      <section id="team" className="section">
-        <h2>团队成员</h2>
-        <p>这是团队成员页面的内容。</p>
+      <section id="team" className="team-section">
+        <div className="container">
+          <h2 className="section-title">成员和成果</h2>
+          <div className="team-carousel">
+            {/* Slides */}
+            <div
+              className="team-slides js-slides"
+              style={{
+                width: `${extendedImages.length * 100}%`,
+                transform: `translateX(-${
+                  teamIndex * (100 / extendedImages.length)
+                }%)`,
+                transition: enableTransition ? "transform 0.8s ease" : "none",
+                display: "flex",
+              }}
+            >
+              {extendedImages.map((src, idx) => (
+                <div
+                  key={idx}
+                  className="team-slide"
+                  style={{
+                    backgroundImage: `url(${src})`,
+                    width: `${100 / extendedImages.length}%`,
+                    flex: `0 0 ${100 / extendedImages.length}%`,
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Arrows */}
+            <button
+              className="team-arrow arrow-left"
+              aria-label="上一张"
+              onClick={() =>
+                setTeamIndex((i) => (i === 0 ? teamImages.length - 1 : i - 1))
+              }
+            >
+              ‹
+            </button>
+            <button
+              className="team-arrow arrow-right"
+              aria-label="下一张"
+              onClick={() =>
+                setTeamIndex((i) => (i + 1) % (teamImages.length + 1))
+              }
+            >
+              ›
+            </button>
+
+            {/* Dots */}
+            <div className="team-dots">
+              {teamImages.map((_, i) => {
+                const active = teamIndex % teamImages.length === i;
+                return (
+                  <span
+                    key={i}
+                    className={`team-dot${active ? " active" : ""}`}
+                    onClick={() => setTeamIndex(i)}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* 项目展示 */}
-      <section id="projects" className="section">
-        <h2>项目展示</h2>
-        <p>这是项目展示页面的内容。</p>
+      {/* 团队成果统计条 */}
+      <section className="team-stats-section">
+        <div className="team-stats container">
+          <div className="stat-item">
+            <div className="stat-title">就业</div>
+            <div className="stat-number">40+</div>
+            <div className="stat-desc">
+              阿里、腾讯、百度、字节、快手、滴滴、美团等
+            </div>
+          </div>
+          <div className="stat-or">OR</div>
+          <div className="stat-item">
+            <div className="stat-title">深造</div>
+            <div className="stat-number">20+</div>
+            <div className="stat-desc">
+              中科大、川大、电子科大、重大等保研上岸
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 招新安排 */}
+      <section id="projects" className="projects-section">
+        <div className="container">
+          <h2 className="section-title">招新安排</h2>
+          <div className="projects-gallery">
+            <img
+              className="project-img"
+              src={require("./images/招新253.png")}
+              alt="招新图一"
+            />
+            <img
+              className="project-img"
+              src={require("./images/zx251.jpg")}
+              alt="招新图二"
+            />
+          </div>
+          <a
+            className="qq-group-link"
+            href="https://qm.qq.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            加入我们的 QQ 群
+          </a>
+        </div>
       </section>
 
       {/* 指导老师 */}
-      <section id="teachers" className="section">
-        <h2>指导老师</h2>
-        <p>这是指导老师页面的内容。</p>
+      <section id="teachers" className="teachers-section">
+        <div className="container">
+          <h2 className="teachers-title">指导老师</h2>
+          <div className="teachers-grid">
+            <div className="teacher-card">
+              <div className="teacher-head">
+                <span className="teacher-tag tag-purple">雁</span>
+                <h3 className="teacher-name">陈雁</h3>
+              </div>
+              <p className="teacher-desc">
+                西南石油大学计算机与软件学院教授、硕士生导师，数据科学与大数据专业负责人。长期从事大数据挖掘与机器学习研究，主持或参与多项省部级与企业项目，发表论文与成果多项，具有丰富的产学研合作与项目管理经验。
+              </p>
+            </div>
+
+            <div className="teacher-card">
+              <div className="teacher-head">
+                <span className="teacher-tag tag-violet">忠</span>
+                <h3 className="teacher-name">刘忠慧</h3>
+              </div>
+              <p className="teacher-desc">
+                西南石油大学计算机与软件学院教授、硕士生导师。长期承担课程教学与科研工作，多次获得省级与校级教学奖励，指导学生在学科竞赛中取得优异成绩，研究方向涵盖软件工程与数据分析。
+              </p>
+            </div>
+
+            <div className="teacher-card">
+              <div className="teacher-head">
+                <span className="teacher-tag tag-green">原</span>
+                <h3 className="teacher-name">钟原</h3>
+              </div>
+              <p className="teacher-desc">
+                西南石油大学计算机与软件学院副教授、研究生导师。研究兴趣包括知识工程、智能系统与软件架构，主持参与国家级与省部级项目多项，发表论文与专利若干，注重工程实践能力培养。
+              </p>
+            </div>
+
+            <div className="teacher-card">
+              <div className="teacher-head">
+                <span className="teacher-tag tag-teal">俊</span>
+                <h3 className="teacher-name">郑俊松</h3>
+              </div>
+              <p className="teacher-desc">
+                西南石油大学计算机与软件学院讲师、辅导员。参与多项数据治理与应用系统研发项目，关注学生成长与职业发展指导，在团队建设与项目管理方面经验丰富。
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* 联系我们 */}
